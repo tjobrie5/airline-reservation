@@ -14,9 +14,15 @@ class EndUserController {
 	
 	def authenticate = {
 		def user = EndUser.findByUserNameAndPassword(params.userName, params.password)
+		
+		/*if(!session.isNew()){
+			flash.message = "Please logout before joining a new session."
+			redirect(action:"login")
+		}*/
 		if(user){
-					 session.user = user
-			flash.message = "Hello ${user.fullName}!"
+			session.user = null
+			session.user = user
+			flash.message = "Hello ${user.firstName}!"
 			redirect(action:"login")
 		} else {
 		  flash.message = "Sorry, ${params.userName}. Please try again."
@@ -25,9 +31,13 @@ class EndUserController {
 	}
 	
 	def logout = {
-		flash.message = "Goodbye ${session.user.fullName}"
+		if(session.user == null){
+			redirect(action:"login")
+		}else{
+		flash.message = "Goodbye ${session.user.firstName}"
 		session.user = null
 		redirect(action:"login")
+		}
 	}
 
     def list(Integer max) {

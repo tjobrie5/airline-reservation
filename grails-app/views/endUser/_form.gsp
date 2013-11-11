@@ -2,12 +2,20 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: endUserInstance, field: 'fullName', 'error')} required">
-	<label for="fullName">
-		<g:message code="endUser.fullName.label" default="Full Name" />
+<div class="fieldcontain ${hasErrors(bean: endUserInstance, field: 'firstName', 'error')} required">
+	<label for="firstName">
+		<g:message code="endUser.firstName.label" default="First Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="fullName" required="" value="${endUserInstance?.fullName}"/>
+	<g:textField name="firstName" required="" value="${endUserInstance?.firstName}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: endUserInstance, field: 'lastName', 'error')} required">
+	<label for="lastName">
+		<g:message code="endUser.fullName.label" default="Last Name" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="lastName" required="" value="${endUserInstance?.lastName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: endUserInstance, field: 'userName', 'error')} required">

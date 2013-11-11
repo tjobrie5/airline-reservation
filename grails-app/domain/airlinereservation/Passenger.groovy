@@ -2,18 +2,20 @@ package airlinereservation
 
 class Passenger {
 	
-	String fullName
+	String firstName
+	String lastName
 	String address
 	String phoneNumber
 	
 	String toString() {
-		"${fullName}"
+		return firstName + " " + lastName
 	}
 	
 	static belongsTo = [flight: Flight, user: EndUser]
 
     static constraints = {
-		fullName(blank: false)
+		firstName(blank: false)
+		lastName(blank: false)
 		address()
 		phoneNumber()
     }

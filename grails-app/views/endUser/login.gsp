@@ -44,6 +44,7 @@
                         <g:field type="password" name="password" value="${endUserInstance?.password}"/>
                     </div>
                 </fieldset>
+                <g:link controller="EndUser" action="create">create an account</g:link>
                 <fieldset class="buttons">
                     <g:submitButton name="login" class="save" value="Login" />
                 </fieldset>
