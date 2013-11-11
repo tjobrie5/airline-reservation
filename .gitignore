@@ -1,0 +1,8 @@
+devDB*
+target*/**/*
+.classpath
+/web-app/WEB-INF
+.project
+.settings
+.DS_Store
+
