@@ -1,8 +1,9 @@
+<%@ page import="airlinereservation.Flight" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
+		<title>Welcome to Air America</title>
 		<style type="text/css" media="screen">
 			#status {
 				background-color: #eee;
@@ -41,7 +42,7 @@
 			}
 
 			#page-body {
-				margin: 2em 1em 1.25em 18em;
+				margin: 1em 1em 1.25em 1em;
 			}
 
 			h2 {
@@ -65,10 +66,7 @@
 				margin: 0.25em 0;
 			}
 
-			@media screen and (max-width: 480px) {
-				#status {
-					display: none;
-				}
+			@media screen and (max-width: 720px) {
 
 				#page-body {
 					margin: 0 1em 1em;
@@ -82,46 +80,32 @@
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="status" role="complementary">
-			<h1>Application Status</h1>
-			<ul>
-				<li>App version: <g:meta name="app.version"/></li>
-				<li>Grails version: <g:meta name="app.grails.version"/></li>
-				<li>Groovy version: ${GroovySystem.getVersion()}</li>
-				<li>JVM version: ${System.getProperty('java.version')}</li>
-				<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-				<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-				<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-			</ul>
-			<h1>Installed Plugins</h1>
-			<ul>
-				<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-					<li>${plugin.name} - ${plugin.version}</li>
-				</g:each>
-			</ul>
-		</div>
 		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
-
-			<div id="controller-list" role="navigation">
-				<h2>Available Controllers:</h2>
-				<ul>
-					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-					</g:each>
-				</ul>
-			</div>
+			<h1>Welcome to Air America Online Reservation System!</h1>
+			<p>Congratulations, you have happened upon the best flight reservation system available! A list of flights
+			   is provided below for your viewing pleasure. If you already have an account, feel free to log in in order
+			   to reserve a seat on a plane. If you do not have an account, you must make one in order to reserve a flight</p>
 		</div>
-		<div>
-		  <a href="http://localhost:8080/AirlineReservation/EndUser/login"> Login</a>
-		  <a href="http://localhost:8080/AirlineReservation/flight/flightTable"> See Available Flights</a>
-		  <a href="http://localhost:8080/AirlineReservation/endUser/create"> Create A User</a>
-		</div>
+    <div>
+      <table border="1">
+        <caption>Flight Details</caption>
+        <tr>
+          <th>Airline</th>
+          <th>Flight Number</th>
+          <th>Departure Time</th>
+          <th>Arrival Time</th>
+          <th>Status</th>
+        </tr>
+        <g:each controller="flight" in="${allFlights}" status="i" var="currentProject">
+          <tr>
+            <td>${currentProject.airline}</td>
+            <td>${currentProject.flightNumber}</td>
+            <td>${currentProject.departureTime}</td>
+            <td>${currentProject.arrivalTime}</td>
+            <td>${currentProject.status}</td>
+          </tr>
+        </g:each>
+      </table>
+    </div>
 	</body>
 </html>

@@ -40,7 +40,7 @@ body {
 	background: #ffffff;
 	color: #333333;
 	margin: 0 auto;
-	max-width: 960px;
+	max-width: 1280px;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
 	   -moz-box-shadow: 0 0 0.3em #255b17;
 	-webkit-box-shadow: 0 0 0.3em #255b17;
@@ -49,6 +49,9 @@ body {
 
 #grailsLogo {
 	background-color: #abbf78;
+}
+#aaLogo {
+    background-color: #00bfff;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -93,6 +96,44 @@ img {
 	display: inline-block;
 	margin: 1em;
 }
+#aaLogo a {
+    display: inline-block;
+    margin: 1em;
+}
+#signupButton a {
+    display: relative;
+    margin-top: -30px;
+    margin-right: 60px;
+    float: right;
+}
+#loginButton a {
+    display: relative;
+    margin-top: -30px;
+    float: right;
+}
+#userIdBlock a {
+    display: relative;
+    margin-top: -30px;
+    float: right;
+}
+#viewFlight a {
+    display: relative;
+    margin-top: -30px;
+    float: left;
+    margin-left: 200px;
+}
+#editFlight a {
+    display: relative;
+    margin-top: -30px;
+    float: left;
+    margin-left: 300px;
+}
+#editUser a {
+    display: relative;
+    margin-top: -30px;
+    float: left;
+    margin-left: 445px;
+}
 
 .content {
 }
@@ -108,7 +149,7 @@ img {
 }
 
 .footer {
-	background: #abbf78;
+	background: #00bfff;
 	color: #000;
 	clear: both;
 	font-size: 0.8em;

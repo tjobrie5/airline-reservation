@@ -7,6 +7,8 @@ class Flight {
 	Date arrivalTime
 	String status
 	Integer seats
+    String origin
+    String destination
 	
 	String toString() {
 		"${flightNumber}"
@@ -16,10 +18,11 @@ class Flight {
 
     static constraints = {
 		flightNumber(blank: false, unique: true)
-		airline(blank: false)
+		airline(blank: false, inList: ["US Airways", "Delta", "American Airlines", "SouthWest", "United Airlines"])
 		departureTime(blank: false)
 		arrivalTime(blank: false)
 		seats(blank: false)
-		
+        origin(blank: false)
+        destination(blank: false)
     }
 }
