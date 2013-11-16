@@ -8,14 +8,9 @@
     </head>
     <body>
         <a href="#create-endUser" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="logout"><g:message code="Logout" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
+        
         <div id="create-endUser" class="content scaffold-create" role="main">
-            <h1><g:message code="AirlineReservation Login" /></h1>
+        	<h1>Login Page</h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
@@ -44,7 +39,6 @@
                         <g:field type="password" name="password" value="${endUserInstance?.password}"/>
                     </div>
                 </fieldset>
-                <g:link controller="EndUser" action="create">create an account</g:link>
                 <fieldset class="buttons">
                     <g:submitButton name="login" class="save" value="Login" />
                 </fieldset>

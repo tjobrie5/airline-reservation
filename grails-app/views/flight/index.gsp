@@ -80,6 +80,9 @@
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		<g:if test="${flash.message}">
+            <div class="message" role="status">${flash.message}</div>
+        </g:if>
 		<div id="page-body" role="main">
 			<h1>Welcome to Air America Online Reservation System!</h1>
 			<p>Congratulations, you have happened upon the best flight reservation system available! A list of flights
@@ -100,8 +103,8 @@
           <tr>
             <td>${currentProject.airline}</td>
             <td>${currentProject.flightNumber}</td>
-            <td>${currentProject.departureTime}</td>
-            <td>${currentProject.arrivalTime}</td>
+            <td>${currentProject.dateFormat(currentProject.departureTime)}</td>
+            <td>${currentProject.dateFormat(currentProject.arrivalTime)}</td>
             <td>${currentProject.status}</td>
           </tr>
         </g:each>

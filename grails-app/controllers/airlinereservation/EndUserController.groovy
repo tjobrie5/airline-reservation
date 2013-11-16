@@ -15,15 +15,11 @@ class EndUserController {
 	def authenticate = {
 		def user = EndUser.findByUserNameAndPassword(params.userName, params.password)
 		
-		/*if(!session.isNew()){
-			flash.message = "Please logout before joining a new session."
-			redirect(action:"login")
-		}*/
+		
 		if(user){
 			session.user = null
 			session.user = user
-			flash.message = "Hello ${user.firstName}!"
-			redirect(action:"login")
+			redirect(uri:"/")	//redirects the user to the homepage after login is successful
 		} else {
 		  flash.message = "Sorry, ${params.userName}. Please try again."
 		  redirect(action:"login")
@@ -41,8 +37,17 @@ class EndUserController {
 	}
 
     def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [endUserInstanceList: EndUser.list(params), endUserInstanceTotal: EndUser.count()]
+		if(session.user == null){
+			flash.message = "You do not have permission to access this page"
+			redirect(uri:"/")
+			
+		}else if(session.user.role != "admin"){
+			flash.message = "You do not have permission to access this page"
+			redirect(uri:"/")
+		}else{
+			params.max = Math.min(max ?: 10, 100)
+			[endUserInstanceList: EndUser.list(params), endUserInstanceTotal: EndUser.count()]
+		}
     }
 
     def create() {

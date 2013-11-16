@@ -19,28 +19,24 @@
 	</head>
 	<body>
 		<div id="aaLogo" role="banner"><a href="http://localhost:8080/AirlineReservation"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>
-		
+			
 		</div>
 
+	
     <div id="viewFlight" role="button"><g:link controller="Flight" action="list">
       <input type="button" value="View Flights" class="button"/></g:link></div>
-
-    <g:if test="${session.user==null}">
-        <div id="signupButton" role="button"><g:link controller= "EndUser" action="create">
-        <input type="button" value="Sign Up!" class="button"/>
-        </g:link></div>
-        <div id="loginButton" role="button"><g:link controller= "EndUser" action="login">
-          <input type="button" value="Login" class="button"/>
-        </g:link></div>
-        </g:if>
-        <g:if test="${session.user!=null}">
-          <div id="userIdBlock" role="button"><g:link controller="EndUser" action="edit">
-            <input type="button" value="Logged In As: ${session.user.firstName}" class="button"/></g:link></div>
+    <div id="loginHeader">
+		<g:loginControl /> 
+	</div>
+		<g:if test="${session.user != null}">
           <g:if test="${session.user.role=="admin"}">
-            <div id="editFlight" role="button"><g:link controller="Flight" action="edit">
-              <input type="button" value="Create/Edit Flights" class="button"/></g:link></div>
+            <div id="editFlight" role="button"><g:link controller="Flight" action="create">
+              <input type="button" value="Create New Flight" class="button"/></g:link></div>
           </g:if>
         </g:if>
+        
+        
+        
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>

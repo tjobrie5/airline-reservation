@@ -100,15 +100,10 @@ img {
     display: inline-block;
     margin: 1em;
 }
-#signupButton a {
-    display: relative;
-    margin-top: -30px;
-    margin-right: 60px;
-    float: right;
-}
-#loginButton a {
-    display: relative;
-    margin-top: -30px;
+#loginHeader{
+	padding: 2px;
+	display: relative;
+	margin-top: -30px;
     float: right;
 }
 #userIdBlock a {

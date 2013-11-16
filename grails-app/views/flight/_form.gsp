@@ -79,6 +79,6 @@
 		<g:message code="flight.status.label" default="Status" />
 		
 	</label>
-	<g:textField name="status" value="${flightInstance?.status}"/>
+	<g:select name="status" from="${flightInstance.constraints.status.inList}" required="" value="${flightInstance?.status}" valueMessagePrefix="flight.status"/>
 </div>
 

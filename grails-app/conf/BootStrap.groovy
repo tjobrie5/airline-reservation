@@ -21,11 +21,13 @@ class BootStrap {
 					println jdoe.errors
 				}
 				
-				long offset = 3;
+				long offset = 0;
+				Date date = new Date()
+				Date depart = new Date(date.getTime() + offset);
+				offset = 10800000;
+				Date arrive = new Date(date.getTime() + offset);
 				
-				Date date = new Date(offset);
-				
-				def plane1 = new Flight(flightNumber: "143", airline: "US Airways", travelType: "domestic", departureTime: date ,arrivalTime: date, businessSeats: 14, commercialSeats: 20, origin: "PHX", destination:"PHI", status:"on route" )
+				def plane1 = new Flight(flightNumber: "143", airline: "US Airways", travelType: "domestic", departureTime: depart ,arrivalTime: arrive, businessSeats: 14, commercialSeats: 20, origin: "PHX", destination:"PHI", status:"on time" )
 				plane1.save()
 				if(plane1.hasErrors()){
 					println plane1.errors

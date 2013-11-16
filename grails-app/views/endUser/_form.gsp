@@ -34,20 +34,5 @@
 	<g:field type="password" name="password" required="" value="${endUserInstance?.password}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: endUserInstance, field: 'passenger', 'error')} ">
-	<label for="passenger">
-		<g:message code="endUser.passenger.label" default="Passenger" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${endUserInstance?.passenger?}" var="p">
-    <li><g:link controller="passenger" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="passenger" action="create" params="['endUser.id': endUserInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'passenger.label', default: 'Passenger')])}</g:link>
-</li>
-</ul>
 
-</div>
 

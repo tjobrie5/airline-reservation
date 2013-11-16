@@ -1,8 +1,11 @@
 package airlinereservation
 
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+
 class Flight {
 	String airline
-	String flightNumber
+	Integer flightNumber
 	Date departureTime
 	Date arrivalTime
 	String status
@@ -14,6 +17,13 @@ class Flight {
 	
 	String toString() {
 		"${flightNumber}"
+	}
+	
+	String dateFormat(Date d){
+		DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+		String date = df.format(d);
+		
+		return date
 	}
 	
 	static hasMany = [passengers: Passenger]
@@ -28,5 +38,6 @@ class Flight {
 		commercialSeats(blank: false, min: 0,max: 200 )
         origin(blank: false)
         destination(blank: false)
+		status(blank:false, inList: ["boarding","on route", "delayed", "on time"])
     }
 }

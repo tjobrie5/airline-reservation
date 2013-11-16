@@ -10,6 +10,7 @@ class FlightController {
 	}
 	
 	def list(){
+		
 		def flights = Flight.list()
 		render(view:'list',
 			model:[flightInstanceList: flights,
@@ -17,7 +18,17 @@ class FlightController {
 	}
 	
 	def create() {
-		[flightInstance: new Flight(params)]
+		if(session.user == null){
+			flash.message = "You do not have permission to access this page"
+			redirect(uri:"/")
+			
+		}else if(session.user.role != "admin"){
+			flash.message = "You do not have permission to access this page"
+			redirect(uri:"/")
+		}else{
+		
+			[flightInstance: new Flight(params)]
+		}
 	}
 	
 	def save() {
