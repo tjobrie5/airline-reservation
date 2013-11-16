@@ -31,6 +31,7 @@
 					
 				</li>
 				</g:if>
+				
 			
 				<g:if test="${endUserInstance?.userName}">
 				<li class="fieldcontain">

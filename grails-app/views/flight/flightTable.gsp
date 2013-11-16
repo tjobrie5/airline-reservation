@@ -16,6 +16,7 @@
     <tr>
       <td>${currentProject.airline}</td>
       <td>${currentProject.flightNumber}</td>
+      <td>${currentProject.destination}</td>
       <td>${currentProject.departureTime}</td>
       <td>${currentProject.arrivalTime}</td>
       <td>${currentProject.status}</td>
