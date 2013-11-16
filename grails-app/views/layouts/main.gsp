@@ -18,7 +18,9 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="aaLogo" role="banner"><a href="http://localhost:8080/AirlineReservation"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
+		<div id="aaLogo" role="banner"><a href="http://localhost:8080/AirlineReservation"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>
+		
+		</div>
 
     <div id="viewFlight" role="button"><g:link controller="Flight" action="list">
       <input type="button" value="View Flights" class="button"/></g:link></div>
@@ -37,8 +39,6 @@
           <g:if test="${session.user.role=="admin"}">
             <div id="editFlight" role="button"><g:link controller="Flight" action="edit">
               <input type="button" value="Create/Edit Flights" class="button"/></g:link></div>
-            <div id="editUser" role="button"><g:link controller="endUser" action="edit">
-              <input type="button" value="Create/Edit Users" class="button"/></g:link></div>
           </g:if>
         </g:if>
 		<g:layoutBody/>
