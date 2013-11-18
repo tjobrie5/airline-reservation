@@ -111,4 +111,45 @@ class FlightController {
 			redirect(action: "show", id: id)
 		}
 	}
+	
+	def upload_logo = {
+		def flight = Flight.current(session)
+		
+		def f = request.getFile('logo')
+		
+		def okcontents = ['image/png', 'image/jpeg', 'image/jpg']
+	
+		if(!okcontents.contatins(f.getContentType())){
+			flash.message = "Logo must be one of: ${okcontents}"
+			render(view:'select_logo', model:[flight:flight])
+			return;
+		}
+		
+		flight.logo = f.getBytes()
+		flight.logoType = f.getContentType()
+		log.info("File uploaded: " + flight.logoType)
+		
+		if(flight.save()){
+			render(view:'select_log', model:[flight:flight])
+			return;
+		}	
+		
+		flash.message = "Logo (${flight.logoType}, ${flight.logo.size()} bytes) uploaded."
+		redirect(action:'show')
+	}
+	
+	def logo_image = {
+		def logoFlight = Flight.get(params.id)
+		if (!logoFlight || !logoFlight.logo || !logoFlight.logoType) {
+			response.sendError(404)
+			return;
+		}
+		
+		response.setContentType(logoFlight.logoType)
+		response.setContentLength(logoFlight.log0.size())
+		OutputStream out = response.getOutputStream();
+		out.write(logoFlight.logo);
+		out.close();
+		
+	}
 }

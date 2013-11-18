@@ -14,6 +14,8 @@ class Flight {
     String origin
     String destination
 	String travelType
+	byte[] logo
+	String logoType
 	
 	String toString() {
 		"${flightNumber}"
@@ -39,5 +41,7 @@ class Flight {
         origin(blank: false)
         destination(blank: false)
 		status(blank:false, inList: ["boarding","on route", "delayed", "on time"])
+		logo(nullable:true, maxSize: 16384/* 16K */)
+		logoType(nullable:true)
     }
 }
