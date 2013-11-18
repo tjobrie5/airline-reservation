@@ -18,7 +18,7 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="aaLogo" role="banner"><a href="http://localhost:8080/AirlineReservation"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a>
+		<div id="aaLogo" role="banner"><a href=${createLink(uri: '/', absolute: 'true')}><img src="${resource(dir: 'images', file: 'aa_logo.jpg')}" alt="Grails"/></a>
 			
 		</div>
 

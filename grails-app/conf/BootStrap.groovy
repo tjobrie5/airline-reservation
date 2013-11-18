@@ -27,7 +27,7 @@ class BootStrap {
 				offset = 10800000;
 				Date arrive = new Date(date.getTime() + offset);
 				
-				def plane1 = new Flight(flightNumber: "143", airline: "US Airways", travelType: "domestic", departureTime: depart ,arrivalTime: arrive, businessSeats: 14, commercialSeats: 20, origin: "PHX", destination:"PHI", status:"on time" )
+				def plane1 = new Flight(flightNumber: "143", airline: "US Airways", travelType: "Domestic", departureTime: depart ,arrivalTime: arrive, businessSeats: 14, commercialSeats: 20, origin: "PHX", destination:"PHI", status:"On time" )
 				plane1.save()
 				if(plane1.hasErrors()){
 					println plane1.errors
