@@ -52,6 +52,17 @@ class FlightController {
 
 		[flightInstance: flightInstance]
 	}
+
+	def booked(Long id){
+		def flightInstance = Flight.get(id)
+		if (!flightInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'flight.label', default: 'Flight'), id])
+			redirect(action: "list")
+			return
+		}
+
+		[flightInstance: flightInstance]
+	}
 	
 	def edit(Long id) {
 		def flightInstance = Flight.get(id)

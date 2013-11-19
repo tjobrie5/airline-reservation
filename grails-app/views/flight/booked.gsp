@@ -1,16 +1,15 @@
-
 <%@ page import="airlinereservation.Flight" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'flight.label', default: 'Flight')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<title>The Flight Has Been Booked</title>
 	</head>
 	<body>
-		<a href="#show-flight" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="show-flight" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+		<a href="#booked-flight" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		<div id="booked-flight" class="content scaffold-booked" role="main">
+			<h1>The Flight Has Been Booked</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -121,10 +120,7 @@
 					<g:form>
 					
 						<fieldset class="buttons">
-							<g:hiddenField name="id" value="${flightInstance?.id}" />
-							<g:link class="edit" action="edit" id="${flightInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-							<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-							<g:link class="booked" action="booked" id="${flightInstance?.id}"><g:message code="default.button.booked.label" default="Booked" /></g:link>
+							<g:hiddenField name="id" value="${flightInstance?.id}" />						
 						</fieldset>
 					</g:form>
 				</g:if>
