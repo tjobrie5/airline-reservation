@@ -90,3 +90,10 @@
 	<g:select name="status" from="${flightInstance.constraints.status.inList}" required="" value="${flightInstance?.status}" valueMessagePrefix="flight.status"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: flightInstance, field: 'price', 'error')} required">
+	<label for="price">
+		<g:message code="flight.price.label" default="price" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="price" required="" value="${flightInstance?.price}"/>
+</div>

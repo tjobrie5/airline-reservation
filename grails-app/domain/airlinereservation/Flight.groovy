@@ -14,6 +14,7 @@ class Flight {
     String origin
     String destination
 	String travelType
+	String price
 	byte[] logo
 	String logoType
 	
@@ -39,6 +40,7 @@ class Flight {
         origin(blank: false)
         destination(blank: false)
 		status(blank:false, inList: ["Boarding","En-Route", "Delayed", "On time"])
+		price(blank: false)
 		logo(nullable:true, maxSize: 16384/* 16K */)
 		logoType(nullable:true)
     }

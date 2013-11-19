@@ -105,6 +105,15 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${flightInstance?.price}">
+				<li class="fieldcontain">
+					<span id="price-label" class="property-label"><g:message code="flight.price.label" default="price" /></span>
+					
+						<span class="property-value" aria-labelledby="price-label"><g:fieldValue bean="${flightInstance}" field="price"/></span>
+					
+				</li>
+				</g:if>
 			
 			</ol>
 			<g:if test="${session.user != null}">

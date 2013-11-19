@@ -28,10 +28,14 @@
 						<g:sortableColumn property="departureTime" title="${message(code: 'flight.departureTime.label', default: 'Departure Time')}" />
 					
 						<g:sortableColumn property="arrivalTime" title="${message(code: 'flight.arrivalTime.label', default: 'Arrival Time')}" />
+
 						<g:sortableColumn property="arrivalTime" title="${message(code: 'flight.origin.label', default: 'Origin')}" />
+						
 						<g:sortableColumn property="arrivalTime" title="${message(code: 'flight.destination.label', default: 'Destination')}" />
 
 						<g:sortableColumn property="status" title="${message(code: 'flight.status.label', default: 'Status')}" />
+
+						<g:sortableColumn property="price" title="${message(code: 'flight.price.label', default: 'Price')}" />
 
 					</tr>
 				</thead>
@@ -54,6 +58,8 @@
                         <td>${fieldValue(bean: flightInstance, field: "destination")}</td>
 					
 						<td>${fieldValue(bean: flightInstance, field: "status")}</td>
+
+						<td>${fieldValue(bean: flightInstance, field: "price")}</td>
 					
 					</tr>
 				</g:each>
