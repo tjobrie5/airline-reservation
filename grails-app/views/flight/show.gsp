@@ -117,14 +117,13 @@
 			
 			</ol>
 			<g:if test="${session.user != null}">
+				<g:hiddenField name="id" value="${flightInstance?.id}" />
+				<g:link class="booked" action="booked" id="${flightInstance?.id}"><g:message code="default.button.booked.label" default="Book Flight" /></g:link>
           		<g:if test="${session.user.role=="admin"}">
-					<g:form>
-					
+					<g:form>					
 						<fieldset class="buttons">
-							<g:hiddenField name="id" value="${flightInstance?.id}" />
 							<g:link class="edit" action="edit" id="${flightInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-							<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-							<g:link class="booked" action="booked" id="${flightInstance?.id}"><g:message code="default.button.booked.label" default="Booked" /></g:link>
+							<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />				
 						</fieldset>
 					</g:form>
 				</g:if>
