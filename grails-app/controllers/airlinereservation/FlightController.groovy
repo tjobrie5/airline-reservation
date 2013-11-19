@@ -8,13 +8,21 @@ class FlightController {
 		def allFlights = Flight.list()
 		[allFlights: allFlights]
 	}
+
+  def bull() {
+    render "${params.origin}"
+  }
 	
 	def list(){
 		
-		def flights = Flight.list()
-		render(view:'list',
-			model:[flightInstanceList: flights,
-					flightInstanceTotal: flights.size()])
+		def flights = Flight.createCriteria().list(params) {
+          if (params.origin && params.destination) {
+            eq("origin", "${params.origin}".toUpperCase())
+            eq("destination", "${params.destination}".toUpperCase())
+          }
+        }
+		[flightInstanceList: flights,
+					flightInstanceTotal: flights.size()]
 	}
 	
 	def create() {
