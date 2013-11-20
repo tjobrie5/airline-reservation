@@ -29,7 +29,6 @@
 			</g:hasErrors>
 			
 			<fieldset>
-  				<legend>Logo Upload</legend>
   				<g:form action="upload_logo" method="post" enctype="multipart/form-data">
    				 <label for="avatar">Logo (16K)</label>
    				 <g:hiddenField name="id" value="${flightInstance?.id}" />

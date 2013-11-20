@@ -95,17 +95,26 @@
         <tr>
           <th>Airline</th>
           <th>Flight Number</th>
+          <th>Travel Type</th>
           <th>Departure Time</th>
           <th>Arrival Time</th>
+          <th>origin</th>
+          <th>destination</th>
           <th>Status</th>
+          <th>Price</th>
+
         </tr>
         <g:each controller="flight" in="${allFlights}" status="i" var="currentProject">
           <tr>
             <td>${currentProject.airline}</td>
             <td>${currentProject.flightNumber}</td>
+            <td>${currentProject.travelType}</td>
             <td>${currentProject.dateFormat(currentProject.departureTime)}</td>
             <td>${currentProject.dateFormat(currentProject.arrivalTime)}</td>
+            <td>${currentProject.origin}</td>
+            <td>${currentProject.destination}</td>
             <td>${currentProject.status}</td>
+            <td>${currentProject.price}</td>
           </tr>
         </g:each>
       </table>
