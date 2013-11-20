@@ -112,29 +112,47 @@ class FlightController {
 		}
 	}
 	
-	def upload_logo = {
-		def flight = Flight.current(session)
+	def up_logo(Long id) {
+		def flightInstance = Flight.get(id)
+		if (!flightInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'flight.label', default: 'Flight'), id])
+			redirect(action: "list")
+			return
+		}
+
+		[flightInstance: flightInstance]
+		
+	}
+	
+	def upload_logo(Long id) {
+		def flightInstance = Flight.get(id)
+		
+		if (!flightInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'flight.label', default: 'Flight'), id])
+			redirect(action: "list")
+			return
+		}
 		
 		def f = request.getFile('logo')
 		
-		def okcontents = ['image/png', 'image/jpeg', 'image/jpg']
+		def okcontents = ['image/png', 'image/jpeg', 'image/jpg', 'image/pdf']
 	
-		if(!okcontents.contatins(f.getContentType())){
+		if(!okcontents.contains(f.getContentType())){
 			flash.message = "Logo must be one of: ${okcontents}"
-			render(view:'select_logo', model:[flight:flight])
+			render(view:'up_logo', model:[flightInstance:flightInstance])
 			return;
 		}
 		
-		flight.logo = f.getBytes()
-		flight.logoType = f.getContentType()
-		log.info("File uploaded: " + flight.logoType)
+		flightInstance.logo = f.getBytes()
+		flightInstance.logoType = f.getContentType()
+		log.info("File uploaded: " + flightInstance.logoType)
 		
-		if(flight.save()){
-			render(view:'select_log', model:[flight:flight])
+		if(!flightInstance.save()){
+			render(view:'up_logo', model:[flightInstance:flightInstance])
 			return;
 		}	
 		
-		flash.message = "Logo (${flight.logoType}, ${flight.logo.size()} bytes) uploaded."
+		flash.message = "Logo (${flightInstance.logoType}, ${flightInstance.logo.size()} bytes) uploaded."
 		redirect(action:'show')
 	}
 	

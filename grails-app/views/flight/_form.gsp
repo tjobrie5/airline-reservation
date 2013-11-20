@@ -18,13 +18,17 @@
 	<g:select name="airline" from="${flightInstance.constraints.airline.inList}" required="" value="${flightInstance?.airline}" valueMessagePrefix="flight.airline"/>
 </div>
 
-<g:form action ="upload_logo" method="post" enctype="multipart/form-data">
-	<label for="logo"> Logo (16K)</label>
+<!--  
+<g:uploadForm action ="upload_logo" enctype="multipart/form-data">
+	<label for="logo">Logo</label>
 	<input type="file" name="logo" id="logo" />
 	<div style="font-size:0.8em; margin: 1.0em;">
 	</div>
 	<input type="submit" class="buttons" value="Upload" />
-</g:form>
+</g:uploadForm>
+-->
+
+
 
 <div class="fieldcontain ${hasErrors(bean: flightInstance, field: 'travelType', 'error')} required">
 	<label for="travelType">
